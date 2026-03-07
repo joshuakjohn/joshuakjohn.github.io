@@ -16,6 +16,8 @@ import { ContactComponent } from './components/contact/contact.component';
 import { IntroComponent } from './components/intro/intro.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CareerComponent } from './components/career/career.component';
+import { PortfolioSkillsComponent } from "./components/skill-section/skill-section.component";
+import { BriefComponent } from './components/brief/brief.component';
 
 export class MyHammerConfig extends HammerGestureConfig {
   override overrides = {
@@ -41,8 +43,10 @@ export class MyHammerConfig extends HammerGestureConfig {
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    HammerModule
-  ],
+    HammerModule,
+    PortfolioSkillsComponent,
+    BriefComponent
+],
   providers: [
     {
       provide: HAMMER_GESTURE_CONFIG,

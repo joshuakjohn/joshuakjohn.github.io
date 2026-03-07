@@ -1,0 +1,35 @@
+@keyframes floatParticle {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(20px, -20px) scale(1.4); }
+}
+
+// ── Particles ─────────────────────────────────────────────────────────────────
+.particles-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.25;
+  animation: floatParticle ease-in-out infinite alternate;
+}
+
+// Decorative BG text
+.bg-text {
+  position: absolute;
+  right: 100px; bottom: 300px;
+  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  font-size: clamp(80px, 18vw, 200px);
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(150, 143, 249, 0.04);
+  letter-spacing: -8px;
+  pointer-events: none;
+  user-select: none;
+  line-height: 1;
+  animation: fadeIn 1.2s 0.5s ease both;
+}

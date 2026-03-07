@@ -1,30 +1,11 @@
 <div class="intro_wrapper" (swipeleft)="swipeLeft()" *ngIf="!isShifted && know_less" [@combinedAnimation]="currentAnimation">
-    <div class="intro">
-        <div class="welcome">
-            <h2 id="hey">Hey Buddy,</h2>
-            <div class="name">
-                <h1 id="im">I'm</h1>
-                <h1 id="name">Josh</h1>
-            </div>
-            <h2 id="message">An Application Software Developer</h2>
-            
-        </div>
-        
-        <div class="link_icons">
-            <a href="https://www.github.com/joshuakjohn" target="_blank"><mat-icon svgIcon="github" class="svg_link"></mat-icon></a>
-            <a href="https://www.linkedin.com/in/joshuakjohn" target="_blank"><mat-icon svgIcon="linkedin" class="svg_link"></mat-icon></a>
-            <a href="https://www.instagram.com/joshua_k_john" target="_blank"><mat-icon svgIcon="instagram" class="svg_link"></mat-icon></a>
-        </div>
-        <button class="know_more_mobile" *ngIf="know_less && !isShifted" (click)="know_more_click()" [@combinedAnimation]="currentAnimation">About me</button>
-        <div id="swipe">
-            <p>swipe</p>
-            <mat-icon>arrow_back</mat-icon>
-        </div>
-
-    </div> 
+    <app-brief (knowMoreClickEemitter)="know_more_click()"></app-brief>
+    <div id="swipe">
+        <p>swipe</p>
+        <mat-icon>arrow_back</mat-icon>
+    </div>
 </div>   
 
-<button class="know_more_button" *ngIf="know_less && !isShifted" (click)="know_more_click()" [@combinedAnimation]="currentAnimation">About me</button>
 <div class="profile" [class.grow]="know_more" *ngIf="!know_less" [@combinedAnimation]="currentAnimation">
     <div class="inner" *ngIf="know_moreee" [@combinedAnimation]="'fade'"></div>
   </div>
@@ -52,18 +33,14 @@
     <mat-icon>arrow_back</mat-icon>
 </div>
     
-<div *ngIf="isShifted" @slideRightInOut class="right_viewport" (swiperight)="swipeRight()">
-    <div class="right_content">
-        <div>
-            <h1 id="skills">Skills</h1>
-        </div>
-        <div class="icons">
-            <app-skill-icons></app-skill-icons>
-        </div>
-        
-    </div>
-
+<div *ngIf="isShifted" @slideRightInOut class="right_viewport"
+  (touchstart)="onTouchStart($event)"
+  (touchend)="onTouchEnd($event)">
+  <div class="right_content">
+    <app-skill-section></app-skill-section>
+  </div>
 </div>
+
 <div @slideRightInOut id="swipeRight" (swiperight)="swipeRight()" *ngIf="isShifted">
     <mat-icon>arrow_back</mat-icon>
     <p>swipe</p>

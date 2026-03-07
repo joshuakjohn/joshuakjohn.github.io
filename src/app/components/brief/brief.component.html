@@ -1,0 +1,47 @@
+<div class="hero-root">
+
+  <!-- ════════════════════════════════
+       HERO CONTENT
+  ════════════════════════════════ -->
+  <div class="hero-content">
+
+    <!-- Eyebrow -->
+    <div class="eyebrow" style="animation-delay: 0.1s">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Hey Buddy,</span>
+    </div>
+
+    <!-- Headline -->
+    <div class="headline">
+      <div class="headline-name" style="animation-delay: 0.2s">I'm Josh,</div>
+      <div class="headline-typed" style="animation-delay: 0.35s">
+        <span class="typed-text">{{ displayedText }}</span><span class="cursor"></span>
+      </div>
+    </div>
+
+    <!-- Subtitle -->
+    <p class="subtitle" style="animation-delay: 0.5s">
+      An Application Software Developer crafting enterprise-grade SPAs,
+      Java backends, and everything in between.
+    </p>
+
+    <!-- CTA buttons -->
+    <div class="cta-row" style="animation-delay: 0.65s">
+      <a (click)="knowMoreClicked()" class="about-btn">
+        About me
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a href="#projects" class="projects-link">View Projects ↗</a>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row" style="animation-delay: 0.8s">
+      <div class="stat-item" *ngFor="let s of stats">
+        <div class="stat-value">{{ s.value }}</div>
+        <div class="stat-label">{{ s.label }}</div>
+      </div>
+    </div>
+  </div>
+</div>

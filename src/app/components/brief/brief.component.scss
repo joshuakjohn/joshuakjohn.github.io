@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500&family=Syne:wght@700;800;900&display=swap');
+
+// ── Variables ──────────────────────────────────────────────────────────────────
+$purple:      #968ff9;
+$text-main:   #e2e8f0;
+$text-name:   #f0f6ff;
+$text-muted:  #3d5470;
+
+// ── Keyframes ──────────────────────────────────────────────────────────────────
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ── Root ───────────────────────────────────────────────────────────────────────
+.hero-root {
+  min-height: 100vh;
+  width: 100vw;
+  font-family: 'DM Mono', 'Courier New', monospace;
+  color: $text-main;
+  position: relative;
+  overflow: hidden;
+  *, *::before, *::after { box-sizing: border-box; }
+}
+
+// ── Hero content ───────────────────────────────────────────────────────────────
+.hero-content {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 100px 48px 80px;
+  max-width: 1100px;
+  margin: 0 50px;
+
+  @media (max-width: 640px) {
+    padding: 100px 24px 80px;
+    margin: 0 0;
+  }
+}
+
+// Eyebrow
+.eyebrow {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 24px;
+  animation: fadeUp 0.7s ease both;
+}
+
+.eyebrow-line {
+  height: 1px; width: 32px;
+  background: linear-gradient(90deg, transparent, $purple);
+}
+
+.eyebrow-text {
+  font-size: 10px;
+  color: $purple;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+// Headline
+.headline {
+  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  line-height: 1.0;
+  margin-bottom: 28px;
+}
+
+.headline-name {
+  font-size: clamp(60px, 10vw, 120px);
+  letter-spacing: -3px;
+  color: $text-name;
+  animation: fadeUp 0.7s ease both;
+}
+
+.headline-typed {
+  font-size: clamp(40px, 7vw, 88px);
+  letter-spacing: -2px;
+  animation: fadeUp 0.7s ease both;
+  min-height: 1.1em;
+}
+
+.typed-text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px $purple;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.75em;
+  background: $purple;
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: cursorBlink 1s step-end infinite;
+}
+
+// Subtitle
+.subtitle {
+  font-size: 13px;
+  color: $text-muted;
+  letter-spacing: 0.5px;
+  max-width: 460px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  animation: fadeUp 0.7s ease both;
+
+  @media (max-width: 640px) {
+    margin: 0 0 5dvh 0;
+  }
+}
+
+// CTA row
+.cta-row {
+  display: flex; align-items: center; gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  animation: fadeUp 0.7s ease both;
+}
+
+.about-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px;
+  border-radius: 40px;
+  border: 1px solid rgba(150, 143, 249, 0.6);
+  background: transparent;
+  color: #c8c0f0;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+
+  &:hover {
+    background: rgba(150, 143, 249, 0.1);
+    border-color: $purple;
+    color: #e2d9ff;
+    box-shadow: 0 0 20px rgba(150, 143, 249, 0.2);
+  }
+}
+
+.projects-link {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $text-muted;
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  cursor: pointer;
+  transition: color 0.25s;
+
+  &:hover { color: $purple; }
+}
+
+// Stats
+.stats-row {
+  display: flex; gap: 40px;
+  margin-top: 64px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.7s ease both;
+
+  @media (max-width: 640px) {
+    margin-top: 5dvh;
+  }
+}
+
+.stat-item {
+  .stat-value {
+    font-size: 26px;
+    font-weight: 900;
+    color: $purple;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: -1px;
+  }
+  .stat-label {
+    font-size: 9px;
+    color: $text-muted;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+}

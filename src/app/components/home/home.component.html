@@ -1,41 +1,78 @@
-    <div class="outer_header">
-        <div class="header">
-            <h1 id="logo">JOSH</h1>
-            <div class="menu_icon">
-                <label for="check">
-                    <input type="checkbox" [checked]="menu" id="check" (click)="menu_click('')"/> 
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </div>
-            <div class="links_circle" [class.grow]="menu">
-                <div class="links" [class.grow]="menu">
-                    <p (click)="navigate('home')" class="link" (click)="menu_click('outer')">Home</p>
-                    <p (click)="navigate('career')" class="link" (click)="menu_click('outer')">Career</p>
-                    <p (click)="navigate('contact')" class="link" (click)="menu_click('outer')">Contact</p>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-    <div class="mobile_menu">
-        <div class="inside_menu">
-            <p>
-                <mat-button-toggle-group class="toggle_button" name="fontStyle" aria-label="Font Style">
-                    <mat-button-toggle value="italic" (click)="navigate('career')" [checked]="currectRoute === '/career'">Career</mat-button-toggle>
-                    <mat-button-toggle value="bold" (click)="navigate('home')" [checked]="currectRoute === '/home'">Home</mat-button-toggle>
-                    <mat-button-toggle value="underline" (click)="navigate('contact')" [checked]="currectRoute === '/contact'">Connect</mat-button-toggle>
-                </mat-button-toggle-group>
-            </p>
-            <!-- <p (click)="navigate('home')">Home</p>
-            <p (click)="navigate('career')">Career</p>
-            <p (click)="navigate('contact')">Connect</p> -->
-        </div>
-        
+  <!-- ════════════════════════════════
+       NAVBAR
+  ════════════════════════════════ -->
+  <nav class="navbar">
+
+    <!-- Logo -->
+    <div class="logo">
+      JOSH<span class="logo-dot"></span>
     </div>
 
+    <!-- Desktop nav links -->
+    <div class="desktop-links">
+      <a
+        *ngFor="let link of navLinks;"
+        class="nav-link"
+        [href]="link.url"
+      >{{ link.label }}</a>
+    </div>
 
-    <div class="container" (click)="menu_click('outer')">
+    <!-- Desktop socials -->
+    <div class="desktop-socials">
+      <a
+        *ngFor="let s of socials;"
+        class="social-btn"
+        [href]="s.href"
+        [attr.aria-label]="s.label"
+        [innerHTML]="s.icon"
+      ></a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button
+      class="hamburger"
+      [class.open]="menuOpen"
+      (click)="toggleMenu()"
+      aria-label="Toggle menu"
+    >
+      <span class="hline hline-1"></span>
+      <span class="hline hline-2"></span>
+      <span class="hline hline-3"></span>
+    </button>
+
+    <!-- Mobile slide-in menu -->
+    <div class="mobile-menu" *ngIf="menuOpen">
+      <div class="mobile-links">
+        <a
+          *ngFor="let link of navLinks; let i = index;"
+          class="mobile-link"
+          [href]="link.url"
+          [style.animation-delay]="(i * 60) + 'ms'"
+          (click)="closeMenu()"
+        >
+          {{ link.label }}
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14" class="chevron">
+            <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="mobile-socials">
+        <a
+          *ngFor="let s of socials;"
+          class="social-btn"
+          [href]="s.href"
+          [attr.aria-label]="s.label"
+          [innerHTML]="s.icon"
+        ></a>
+      </div>
+
+      <div class="mobile-footer-text">Always learning · Always building</div>
+    </div>
+  </nav>
+
+
+
+    <div class="container">
         <router-outlet></router-outlet>
     </div>

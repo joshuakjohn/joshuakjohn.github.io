@@ -1,1 +1,10 @@
+<!-- Particles -->
+<div class="particles-container">
+  <div *ngFor="let p of particles; trackBy: trackByParticle" class="particle" [style.left]="p.left" [style.top]="p.top"
+    [style.width.px]="p.size" [style.height.px]="p.size" [style.background]="p.color"
+    [style.animation-duration]="p.dur + 's'" [style.animation-delay]="p.delay + 's'"></div>
+</div>
+
+<div class="bg-text" aria-hidden="true">JOSH</div>
+
 <router-outlet></router-outlet>

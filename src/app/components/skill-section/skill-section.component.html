@@ -1,0 +1,197 @@
+<div class="skills-root">
+
+  <!-- Main content -->
+  <div class="content-wrap">
+
+    <!-- ── Header ── -->
+    <div class="header">
+      <div class="eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">Technical Profile</span>
+      </div>
+
+      <h1 class="title">
+        Skills &amp;&nbsp;<span class="title-outline">Expertise</span>
+      </h1>
+
+      <p class="subtitle">Hover or tap any card to explore skill details and proficiency levels.</p>
+
+      <div class="stats-row">
+        <div class="stat-item" *ngFor="let s of stats">
+          <div class="stat-value" [style.color]="s.color">{{ s.value }}</div>
+          <div class="stat-label">{{ s.label }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Filter Tabs ── -->
+    <div class="tabs-row">
+      <button
+        *ngFor="let tab of tabs; trackBy: trackById"
+        class="tab-btn"
+        [ngStyle]="getTabStyle(tab)"
+        (click)="setActiveTab(tab.id)"
+      >
+        {{ tab.label }}
+      </button>
+    </div>
+
+    <!-- ── Category Sections ── -->
+    <div class="categories-wrap">
+      <div
+        #categoryRef
+        *ngFor="let category of visibleCategoryList; trackBy: trackByCategory"
+        class="category-panel"
+        [class.visible]="isCategoryVisible(category.id)"
+      >
+        <!-- Category header -->
+        <div class="cat-header" [style.border-bottom-color]="category.color + '20'">
+          <div
+            class="cat-icon-box"
+            [style.background]="category.color + '15'"
+            [style.border-color]="category.color + '40'"
+            [style.color]="category.color"
+            [style.box-shadow]="'0 0 12px ' + category.glow"
+            [innerHTML]="getCategoryIconSvg(category.id)"
+          ></div>
+          <div class="cat-info">
+            <div class="cat-label">{{ category.label }}</div>
+            <div class="cat-meta">{{ category.skills.length }} skills · avg {{ getCategoryAvg(category) }}%</div>
+          </div>
+          <div class="cat-avg-pill">
+            <div class="cat-avg-bar-track">
+              <div
+                class="cat-avg-bar-fill"
+                [style.width]="getCategoryAvg(category) + '%'"
+                [style.background]="'linear-gradient(90deg, ' + category.color + '60, ' + category.color + ')'"
+              ></div>
+            </div>
+            <span class="cat-avg-pct" [style.color]="category.color">{{ getCategoryAvg(category) }}%</span>
+          </div>
+        </div>
+
+        <!-- Skills grid -->
+        <div class="skills-grid">
+          <div
+            *ngFor="let skill of category.skills; let i = index; trackBy: trackBySkill"
+            class="skill-card-outer"
+            [style.animation-delay]="(i * 80) + 'ms'"
+            (click)="toggleSkill(category.id + '-' + skill.name)"
+            (mouseenter)="onCardHover(category.id + '-' + skill.name, true)"
+            (mouseleave)="onCardHover(category.id + '-' + skill.name, false)"
+          >
+            <div
+              class="skill-card-inner"
+              [class.flipped]="isFlipped(category.id, skill.name)"
+            >
+
+              <!-- ── FRONT FACE ── -->
+              <div
+                class="card-face card-front"
+                [style.border-color]="category.color + '40'"
+              >
+                <!-- Glow corner -->
+                <div
+                  class="glow-corner"
+                  [style.background]="'radial-gradient(circle at top right, ' + category.color + '14, transparent 70%)'"
+                ></div>
+
+                <!-- Top row -->
+                <div class="front-top-row">
+                  <div class="skill-icon-box">
+                    <mat-icon
+                      [svgIcon]="skill.name"
+                    ></mat-icon>
+                  </div>
+                  <div class="skill-name-wrap">
+                    <div class="skill-name">{{ skill.name }}</div>
+                    <div class="skill-badges">
+                      <span
+                        class="tag-badge"
+                        [style.background]="getTagStyle(skill.tag).bg"
+                        [style.border-color]="getTagStyle(skill.tag).border"
+                        [style.color]="getTagStyle(skill.tag).text"
+                      >{{ skill.tag }}</span>
+                      <span class="skill-years">{{ skill.years }}</span>
+                    </div>
+                  </div>
+                  <div class="skill-level">
+                    <span class="level-num" [style.color]="category.color">{{ skill.level }}</span>
+                    <span class="level-pct" [style.color]="category.color + '66'">%</span>
+                  </div>
+                </div>
+
+                <!-- Progress bar -->
+                <div class="progress-track">
+                  <div
+                    class="progress-fill"
+                    [style.width]="skill.level + '%'"
+                    [style.background]="'linear-gradient(90deg, ' + category.color + '55, ' + category.color + '99)'"
+                  ></div>
+                </div>
+
+                <!-- Flip hint -->
+                <div class="flip-hint">hover to flip ↕</div>
+              </div>
+
+              <!-- ── BACK FACE ── -->
+              <div
+                class="card-face card-back"
+              >
+                <!-- Back glow corner -->
+                <div
+                  class="glow-corner-back"
+                  [style.background]="'radial-gradient(circle at bottom left, ' + category.color + '20, transparent 70%)'"
+                ></div>
+
+                <!-- Back header -->
+                <div class="back-header">
+                  <div class="skill-icon-box">
+                    <mat-icon
+                      [svgIcon]="skill.name"
+                    ></mat-icon>
+                  </div>
+                  <div class="back-title-wrap">
+                    <div class="back-skill-name">{{ skill.name }}</div>
+                    <div class="back-proficiency" [style.color]="category.color">
+                      {{ getCount(category.id, skill.name) }}% proficiency
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Description (scrollable if > 3 lines) -->
+                <div
+                  class="back-desc"
+                  [style.border-top-color]="category.color + '25'"
+                  [style.scrollbar-color]="category.color + '40 transparent'"
+                >
+                  <p>{{ skill.desc }}</p>
+                </div>
+
+                <!-- Back footer -->
+                <div class="back-footer">
+                  <span
+                    class="tag-badge"
+                    [style.background]="getTagStyle(skill.tag).bg"
+                    [style.border-color]="getTagStyle(skill.tag).border"
+                    [style.color]="getTagStyle(skill.tag).text"
+                  >{{ skill.tag }}</span>
+                  <span class="back-years">{{ skill.years }} exp</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Footer ── -->
+    <div class="footer-note">
+      <div class="footer-line footer-line-left"></div>
+      <span class="footer-text">Always learning · Always building</span>
+      <div class="footer-line footer-line-right"></div>
+    </div>
+
+  </div>
+</div>
