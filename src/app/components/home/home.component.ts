@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 interface Social {
   label: string;
@@ -30,12 +31,16 @@ export class HomeComponent implements OnInit {
   socials: Social[] = [];
 
   constructor(
-    private cdr: ChangeDetectorRef,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.buildSocials();
+  }
+
+  navigate(url: string){
+    this.router.navigate([url]);
   }
 
   // ── Menu ───────────────────────────────────────────────────────────────────
