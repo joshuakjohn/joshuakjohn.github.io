@@ -23,9 +23,9 @@ export class HomeComponent implements OnInit {
   menuOpen = false;
 
   readonly navLinks: NavLink[] = [
-    { label: 'Home',    url: '/home' },
-    { label: 'Career',  url: '/career' },
-    { label: 'Contact', url: '/contact' },
+    { label: 'Home',    url: 'home' },
+    { label: 'Career',  url: 'career' },
+    { label: 'Contact', url: 'contact' },
   ];
 
   socials: Social[] = [];

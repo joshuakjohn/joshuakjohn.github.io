@@ -13,7 +13,7 @@
       <a
         *ngFor="let link of navLinks;"
         class="nav-link"
-        (click)="navigate(link.label)"
+        (click)="navigate(link.url)"
       >{{ link.label }}</a>
     </div>
 
@@ -46,7 +46,7 @@
         <a
           *ngFor="let link of navLinks; let i = index;"
           class="mobile-link"
-          (click)="navigate(link.label)"
+          (click)="navigate(link.url)"
           [style.animation-delay]="(i * 60) + 'ms'"
           (click)="closeMenu()"
         >
