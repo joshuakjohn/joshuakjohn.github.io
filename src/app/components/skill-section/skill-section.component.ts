@@ -180,6 +180,11 @@ export class PortfolioSkillsComponent implements OnInit, AfterViewInit, OnDestro
     this.visibleCategoryList = this.activeTab === 'all'
       ? this.skillCategories
       : this.skillCategories.filter(c => c.id === this.activeTab);
+    
+      // First category is always visible immediately on load
+      if (this.visibleCategoryList.length > 0) {
+      this.visibleCategories.add(this.visibleCategoryList[0].id);
+    }
   }
 
   // ── Skill card flip ────────────────────────────────────────────────────────

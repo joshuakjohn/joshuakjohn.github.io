@@ -4,7 +4,7 @@ import {
   EventEmitter, Output
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface Stat {
   value: string;
@@ -22,7 +22,7 @@ interface Stat {
 export class BriefComponent implements OnInit, OnDestroy {
 
   // ── Typewriter ─────────────────────────────────────────────────────────────
-  readonly typedWords = ['Full Stack Dev', 'Java Engineer', 'Angular Expert', 'Problem Solver'];
+  readonly typedWords = ['Full Stack Dev', 'Java Engineer', 'Angular Expert'];
   displayedText = '';
 
   private wordIndex = 0;

@@ -1,7 +1,7 @@
 <div class="main" @fadeInOut>
     <div class="inner_main">
         <form class="mail" [formGroup]="form" (submit)="sendMail()">
-        <div class="fullname">
+        <div class="fullname" style="animation-delay: 0.1s">
             <p>Full Name</p>
             <input type="text" formControlName="from_name">
                 <div *ngIf="form.get('from_name')?.touched && form.get('from_name')?.invalid" class="error">
@@ -9,7 +9,7 @@
                 </div>
             </div>
             
-            <div class="fullname">
+            <div class="fullname" style="animation-delay: 0.2s">
                 <p>E-mail</p>
                 <input type="email" formControlName="from_email">
                 <div *ngIf="form.get('from_email')?.touched && form.get('from_email')?.invalid" class="error">
@@ -18,14 +18,14 @@
                 </div>
             </div>
             
-            <div class="message">
+            <div class="message" style="animation-delay: 0.3s">
                 <p>Message</p>
                 <textarea name="message" id="" formControlName="message"></textarea>
                 <div *ngIf="form.get('message')?.touched && form.get('message')?.invalid" class="error">
                     *Message is required.
                 </div>
             </div>
-            <div class="send">
+            <div class="send" style="animation-delay: 0.4s">
                 <button type="submit" [class.loading]="buttonClicked">Send</button>
                 <p *ngIf="buttonClicked">Sending...</p>
             </div>

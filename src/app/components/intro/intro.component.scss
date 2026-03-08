@@ -78,6 +78,8 @@
 }
 
 .right_viewport {
+  position: absolute;
+  top: 10dvh;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -92,7 +94,9 @@
   overflow-y: scroll;
   width: 70vw;
   -ms-overflow-style: none;
-  scrollbar-width: none;
+
+  &::-webkit-scrollbar { width: 4px; background: #0a0812; }
+  &::-webkit-scrollbar-thumb { background: #1e1830; border-radius: 4px; }
 
   -webkit-mask-image: linear-gradient(
     to bottom,
@@ -188,7 +192,6 @@
   }
 
   .right_viewport {
-    all: unset;
     width: 100vw;
     display: flex;
     justify-content: center;
@@ -282,10 +285,10 @@
     width: 100vw;
     font-size: 15px;
     justify-content: center;
-    color: rgb(255, 255, 255);
+    color: #7a9abf;
     font-style: italic;
     font-weight: 10;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'DM Mono', 'Courier New', monospace;
     top: 90dvh;
     display: flex;
     align-items: center;
@@ -304,10 +307,10 @@
     width: 100vw;
     font-size: 15px;
     justify-content: center;
-    color: rgb(255, 255, 255);
+    color: #7a9abf;
     font-style: italic;
     font-weight: 10;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'DM Mono', 'Courier New', monospace;
     top: 90dvh;
     display: flex;
     align-items: center;
@@ -326,10 +329,10 @@
     font-size: 15px;
     flex-direction: column;
     justify-content: center;
-    color: rgb(255, 255, 255);
+    color: #7a9abf;
     font-style: italic;
     font-weight: 10;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'DM Mono', 'Courier New', monospace;
     top: 90dvh;
     display: flex;
     align-items: center;

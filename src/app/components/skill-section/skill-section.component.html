@@ -4,7 +4,7 @@
   <div class="content-wrap">
 
     <!-- ── Header ── -->
-    <div class="header">
+    <div class="header" style="animation-delay: 0.2s">
       <div class="eyebrow">
         <div class="eyebrow-line"></div>
         <span class="eyebrow-text">Technical Profile</span>
@@ -25,7 +25,7 @@
     </div>
 
     <!-- ── Filter Tabs ── -->
-    <div class="tabs-row">
+    <div class="tabs-row" style="animation-delay: 0.4s">
       <button
         *ngFor="let tab of tabs; trackBy: trackById"
         class="tab-btn"
@@ -37,7 +37,7 @@
     </div>
 
     <!-- ── Category Sections ── -->
-    <div class="categories-wrap">
+    <div class="categories-wrap" style="animation-delay: 0.6s">
       <div
         #categoryRef
         *ngFor="let category of visibleCategoryList; trackBy: trackByCategory"

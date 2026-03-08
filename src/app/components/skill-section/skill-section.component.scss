@@ -15,6 +15,11 @@ $text-name:  #c8c0f0;
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 // ── Root ─────────────────────────────────────────────────────────────────────
 .skills-root {
   min-height: 100vh;
@@ -43,6 +48,7 @@ $text-name:  #c8c0f0;
 .header {
   margin-bottom: 56px;
   position: relative;
+  animation: fadeUp 0.7s ease both;
 }
 
 .eyebrow {
@@ -117,7 +123,8 @@ $text-name:  #c8c0f0;
   display: flex;
   gap: 6px;
   margin-bottom: 44px;
-  flex-wrap: wrap;
+  flex-wrap: wrap;  
+  animation: fadeUp 0.7s ease both;
 }
 
 .tab-btn {
@@ -138,6 +145,7 @@ $text-name:  #c8c0f0;
   display: flex;
   flex-direction: column;
   gap: 52px;
+  animation: fadeUp 0.7s ease both;
 }
 
 .category-panel {
@@ -230,6 +238,8 @@ $text-name:  #c8c0f0;
   cursor: pointer;
   border-radius: 14px;
   animation: fadeSlideIn 0.5s ease both;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 .skill-card-inner {
