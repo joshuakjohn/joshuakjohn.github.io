@@ -29,6 +29,7 @@ export class BriefComponent implements OnInit, OnDestroy {
   private deleting = false;
   private paused = false;
   private typingTimer: ReturnType<typeof setTimeout> | null = null;
+  currentIndex = 0;
 
   // ── Static data ────────────────────────────────────────────────────────────
   readonly stats: Stat[] = [
@@ -51,6 +52,12 @@ export class BriefComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.runTyper();
+
+    setInterval(() => {
+      this.currentIndex =
+        (this.currentIndex + 1) % this.stats.length;
+    }, 3000); // change every 3 seconds
+    
   }
 
   ngOnDestroy(): void {

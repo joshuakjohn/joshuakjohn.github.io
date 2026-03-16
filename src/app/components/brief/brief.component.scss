@@ -25,6 +25,10 @@ $text-muted:  #3d5470;
   position: relative;
   overflow: hidden;
   *, *::before, *::after { box-sizing: border-box; }
+
+  @media (max-width: 640px) {
+    display: flex; justify-content: center;
+  }
 }
 
 // ── Hero content ───────────────────────────────────────────────────────────────
@@ -37,8 +41,8 @@ $text-muted:  #3d5470;
   margin: 0 50px;
 
   @media (max-width: 640px) {
-    padding: 100px 24px 80px;
-    margin: 0 0;
+    padding: 0px 24px 0px;
+    margin: 0 0 80px;
   }
 }
 
@@ -172,9 +176,13 @@ $text-muted:  #3d5470;
   @media (max-width: 640px) {
     margin-top: 5dvh;
   }
+
+  @media (max-height: 700px) and (max-width: 640px) {
+    display: none;
+  }
 }
 
-.stat-item {
+.stat-item, .stat-item-animated {
   .stat-value {
     font-size: 26px;
     font-weight: 900;
@@ -189,4 +197,25 @@ $text-muted:  #3d5470;
     text-transform: uppercase;
     margin-top: 2px;
   }
+}
+
+.stat-container {
+  position: relative;
+  height: 80px;
+  margin-top: 5dvh;
+
+  @media (min-height: 700px), (min-width: 640px) {
+    display: none;;
+  }
+
+}
+
+.stat-item-animated {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.stat-item-animated.active {
+  opacity: 1;
 }
