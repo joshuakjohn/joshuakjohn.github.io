@@ -204,8 +204,9 @@
 
   #about_mobile {
     display: block;
-    line-height: 30px;
+    line-height: 3.2dvh;
     color: #3d5470;
+    height: 50dvh;
   }
 
   .profile {
@@ -333,7 +334,7 @@
     font-style: italic;
     font-weight: 10;
     font-family: 'DM Mono', 'Courier New', monospace;
-    top: 90dvh;
+    top: 93dvh;
     display: flex;
     align-items: center;
     gap: 2px;
